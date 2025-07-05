@@ -1,5 +1,9 @@
+import subprocess
+
 from discord import app_commands, Interaction
 from discord.ext.commands import Bot
+
+
 
 async def setup(bot: Bot):
     def is_admin(interaction: Interaction) -> bool:
@@ -11,4 +15,4 @@ async def setup(bot: Bot):
         description = "Starts the server."
     )
     async def startserver(interaction: Interaction):
-        return 0
+        subprocess.run(["./startserver.sh"])
