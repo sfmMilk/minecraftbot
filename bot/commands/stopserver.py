@@ -16,6 +16,8 @@ async def setup(bot: Bot):
     )
     async def stopserver(interaction: Interaction):
         status = serverutil.getStatus() != None
-        if not status: return
-        subprocess.run(["./startserver.sh"])
-        await interaction.response.send_message("Server starting.. Check status with the status command. (Be patient!)")
+        if not status:
+            await interaction.response.send_message("Server either isn't online.")
+            return
+        subprocess.run(["./stopserver.sh"])
+        await interaction.response.send_message("Server stopping.. Check status before starting.")
