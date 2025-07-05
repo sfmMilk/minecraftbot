@@ -9,9 +9,6 @@ async def setup(bot: Bot):
     def is_admin(interaction: Interaction) -> bool:
         return any(role.name == "Admin" for role in interaction.user.roles)
     
-    def is_starting() -> bool:
-        return False
-    
     @app_commands.check(is_admin)
     @bot.tree.command(
         name = "startserver",
