@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "test!"
+
+screen -S minecraft -X stuff "stop$(printf \\r)"
