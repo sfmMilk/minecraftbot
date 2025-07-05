@@ -7,7 +7,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 command_files = [
-    "communicate",
+    #"communicate",
     "startserver",
     "stopserver",
     "status"
@@ -19,14 +19,17 @@ token = os.getenv('DISCORD_TOKEN')
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix = None, intents = intents)
+bot = commands.Bot(command_prefix = "!", intents = intents)
+guild = discord.Object(439550192526688256)
 
 async def load_commands():
     for name in command_files:
+        print(f"Loading...{name}")
         try:
             modulePath = f"commands.{name}"
             module = importlib.import_module(modulePath)
             await module.setup(bot)
+            print(f"Loaded...{name}!")
         except Exception as e:
             print(e)
 
@@ -34,7 +37,8 @@ async def load_commands():
 async def on_ready():
     print("Bot is running. Loading and syncing commands..")
     await load_commands()
-    await bot.tree.sync()
+    bot.tree.clear_commands(guild=guild)
+    await bot.tree.sync(guild=guild)
     print("Synced commands.")
 
 bot.run(token)

@@ -16,8 +16,8 @@ async def setup(bot: Bot):
     )
     async def startserver(interaction: Interaction):
         status = serverutil.getStatus() != None
-        if status:
-            await interaction.response.send_message("Server already up. Unable to join? Maybe wait.")
-            return
+        #if status:
+            #await interaction.response.send_message("Server already up. Unable to join? Maybe wait.")
+            #return
         subprocess.run(["./startserver.sh"])
         await interaction.response.send_message("Server starting.. Check status with the status command. (Be patient!)")

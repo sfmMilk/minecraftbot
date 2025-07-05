@@ -8,4 +8,3 @@ def getStatus():
     except:
         print("Server unreachable, or an error occured.")
         return None
-    
