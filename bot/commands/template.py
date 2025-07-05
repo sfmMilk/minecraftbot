@@ -7,8 +7,8 @@ async def setup(bot: Bot):
     
     @app_commands.check(is_admin)
     @bot.tree.command(
-        name = "startserver",
-        description = "Starts the server."
+        name = "commandName",
+        description = "commandDescription"
     )
-    async def startserver(interaction: Interaction):
+    async def commandName(interaction: Interaction):
         return 0
