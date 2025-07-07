@@ -11,7 +11,6 @@ if [ -d "./$SERVER_NAME" ]; then
     screen -dmS minecraft -c './start.sh' # ASSUMES start.sh IS REAL!! DANGEROUS!!
     echo "Started server!"
 else
-    ls
     echo "$SERVER_NAME does not exist!"
 fi
 
