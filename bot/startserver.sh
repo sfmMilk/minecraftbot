@@ -2,7 +2,7 @@
 PARENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd $PARENT_DIR/bot # Changes directory to bot. That way I can find config bash lol
 source ./config/config.sh
-cd ./.. # Go up a level outside of bot, this is where your minecraftservers SHOULD be.
+cd ./../.. # Go up two level outside of bot, this is where your minecraftservers SHOULD be.
 
 echo "Starting server.."
 
