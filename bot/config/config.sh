@@ -1,2 +1,2 @@
-export SERVER_NAME="Server"
+export SERVER_NAME="Default"
 export WORLD_NAME="Default"

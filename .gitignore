@@ -4,3 +4,5 @@
 .env
 #Ignore pycache directory
 __pycache__
+#Ignore test server
+Default

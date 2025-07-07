@@ -4,10 +4,14 @@ cd $PARENT_DIR/bot # Changes directory to bot. That way I can find config bash l
 source ./config/config.sh
 cd ./.. # Go up a level outside of bot, this is where your minecraftservers SHOULD be.
 
+echo "Starting server.."
+
 if [ -d "./$SERVER_NAME" ]; then
     cd ./$SERVER_NAME
-    screen -dmS bash -c './start.sh' # ASSUMES start.sh IS REAL!! DANGEROUS!!
+    screen -dmS minecraft -c './start.sh' # ASSUMES start.sh IS REAL!! DANGEROUS!!
+    echo "Started server!"
 else
+    ls
     echo "$SERVER_NAME does not exist!"
 fi
 

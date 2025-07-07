@@ -1,10 +1,8 @@
-from mcstatus import JavaServer
+import socket
 
-def getStatus():
+def getStatus(host='localhost', port=25565, timeout=1):
     try:
-        server = JavaServer.lookup("bliss")
-        status = server.status()
-        return status
-    except:
-        print("Server unreachable, or an error occured.")
-        return None
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except (socket.timeout, ConnectionRefusedError):
+        return False
