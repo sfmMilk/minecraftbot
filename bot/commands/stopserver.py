@@ -1,9 +1,13 @@
 import subprocess
 
+from pathlib import Path
 from util import serverutil
 from discord import app_commands, Interaction
 from discord.ext.commands import Bot
 
+current_dir = Path(__file__).resolve()
+bot_dir = current_dir.parent.parent
+stopServerBash_dir = bot_dir / "stopserver.sh"
 
 async def setup(bot: Bot):
     def is_admin(interaction: Interaction) -> bool:
@@ -15,9 +19,9 @@ async def setup(bot: Bot):
         description = "Stops the server."
     )
     async def stopserver(interaction: Interaction):
-        status = serverutil.getStatus() != None
+        status = serverutil.getStatus()
         if not status:
             await interaction.response.send_message("Server isn't online.")
             return
-        subprocess.run(["./stopserver.sh"])
+        subprocess.run([stopServerBash_dir])
         await interaction.response.send_message("Server stopping.. Check status before starting.")
